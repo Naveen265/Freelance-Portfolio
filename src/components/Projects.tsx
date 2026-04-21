@@ -98,10 +98,13 @@ const projects = [
   },
 ]
 
+import ProjectsScene from './ProjectsScene'
+
 export default function Projects() {
   return (
-    <section id="work" className="section">
-      <div className="section-label">
+    <section id="work" className="section" style={{ overflow: 'hidden' }}>
+      <ProjectsScene />
+      <div className="section-label" style={{ position: 'relative', zIndex: 1 }}>
         <span className="dot" />
         <span className="num">04 /</span> Selected work
       </div>
@@ -115,7 +118,7 @@ export default function Projects() {
         A mix of current freelance work and select projects from my time at Zeb and AVASOFT.
       </p>
 
-      <div className="projects-grid">
+      <div className="projects-grid" style={{ position: 'relative', zIndex: 1 }}>
         {projects.map((p, i) => (
           <div
             key={i}

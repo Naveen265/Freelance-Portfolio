@@ -18,7 +18,7 @@ export default function WorkingPrinciples() {
           <div className="callout-attr">
             <div className="callout-avatar" />
             <div>
-              <div>Naveen · Full-stack Developer</div>
+              <div>Naveen John Kennedy · Full-stack Developer</div>
               <div style={{ color: 'var(--fg-faint)', marginTop: 2 }}>Freelance, 2026</div>
             </div>
           </div>

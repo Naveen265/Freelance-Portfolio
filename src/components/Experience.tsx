@@ -29,15 +29,18 @@ const jobs = [
   },
 ]
 
+import ExperienceScene from './ExperienceScene'
+
 export default function Experience() {
   return (
-    <section id="experience" className="section">
-      <div className="section-label">
+    <section id="experience" className="section" style={{ overflow: 'hidden' }}>
+      <ExperienceScene />
+      <div className="section-label" style={{ position: 'relative', zIndex: 1 }}>
         <span className="dot" />
         <span className="num">05 /</span> Experience
       </div>
 
-      <div className="experience-grid">
+      <div className="experience-grid" style={{ position: 'relative', zIndex: 1 }}>
         <div className="experience-heading">
           Where I've<br /><em>built.</em>
         </div>

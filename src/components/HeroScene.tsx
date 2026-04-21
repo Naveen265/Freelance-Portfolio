@@ -109,6 +109,10 @@ export default function HeroScene() {
     const mesh = new THREE.Mesh(new THREE.TorusKnotGeometry(0.95, 0.32, 220, 32), mat)
     scene.add(mesh)
 
+    mesh.position.x = window.innerWidth >= 768 ? 2 : 0
+    const onResize = () => { mesh.position.x = window.innerWidth >= 768 ? 2 : 0 }
+    window.addEventListener('resize', onResize)
+
     let targetRX = 0, targetRY = 0, curRX = 0, curRY = 0
     const onMouseMove = (e: MouseEvent) => {
       targetRY = (e.clientX / window.innerWidth  - 0.5) * 0.6
@@ -127,8 +131,8 @@ export default function HeroScene() {
       mesh.rotation.x += 0.0015
       curRX += (targetRX - curRX) * 0.05
       curRY += (targetRY - curRY) * 0.05
-      camera.position.x = curRY * 0.6
-      camera.position.y = -curRX * 0.4
+      camera.position.x = curRY * 0.4
+      camera.position.y = -curRX * 0.3
       camera.lookAt(0, 0, 0)
       renderer.render(scene, camera)
     }
@@ -138,6 +142,7 @@ export default function HeroScene() {
       cancelAnimationFrame(rafId)
       ro.disconnect()
       window.removeEventListener('mousemove', onMouseMove)
+      window.removeEventListener('resize', onResize)
       renderer.dispose()
       if (container.contains(renderer.domElement)) container.removeChild(renderer.domElement)
     }

@@ -25,15 +25,18 @@ const services = [
   },
 ]
 
+import ServicesScene from './ServicesScene'
+
 export default function Services() {
   return (
-    <section id="services" className="section">
-      <div className="section-label">
+    <section id="services" className="section" style={{ overflow: 'hidden' }}>
+      <ServicesScene />
+      <div className="section-label" style={{ position: 'relative', zIndex: 1 }}>
         <span className="dot" />
         <span className="num">02 /</span> What I do
       </div>
 
-      <div className="services-grid">
+      <div className="services-grid" style={{ position: 'relative', zIndex: 1 }}>
         {services.map(s => (
           <div key={s.idx} className="service" data-cursor="hover">
             <div className="service-idx">{s.idx}</div>
