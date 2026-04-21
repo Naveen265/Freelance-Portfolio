@@ -1,0 +1,60 @@
+/* ===== Responsive: Tablet ===== */
+@media (max-width: 1024px) {
+  nav { padding: 18px 28px !important; }
+  nav ul { gap: 20px !important; }
+  section.hero-section { padding: 110px 28px 40px !important; }
+  section { padding: 100px 28px !important; }
+  .hero-bottom-grid { grid-template-columns: 1fr 1fr !important; gap: 32px !important; }
+  .about-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+  .stack-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
+  .stack-canvas-wrap { height: 440px !important; }
+  .callout-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+  .projects-grid-inner { grid-template-columns: repeat(4, 1fr) !important; gap: 16px !important; }
+  .project-feat { grid-column: span 4 !important; }
+  .project-wide { grid-column: span 2 !important; }
+  .project-small { grid-column: span 2 !important; }
+  .services-inner { grid-template-columns: 1fr 1fr !important; }
+  .contact-footer-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .contact-section { padding: 120px 28px 60px !important; }
+  .experience-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .experience-heading-sticky { position: static !important; }
+  .exp-item-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+  .contact-layout-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+}
+
+/* ===== Responsive: Mobile ===== */
+@media (max-width: 720px) {
+  nav ul { display: none !important; }
+  nav { padding: 14px 20px !important; font-size: 11px !important; }
+
+  .scroll-cue-el { display: none !important; }
+  .hero-bottom-grid { grid-template-columns: 1fr !important; gap: 24px !important; margin-top: 32px !important; }
+  section { padding: 72px 20px !important; }
+
+  .about-stats-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .services-inner { grid-template-columns: 1fr !important; }
+
+  .stack-canvas-wrap { height: 360px !important; }
+  .stack-list-inner { grid-template-columns: 1fr !important; }
+
+  .projects-grid-inner { grid-template-columns: 1fr !important; gap: 16px !important; }
+  .project-feat, .project-small, .project-wide { grid-column: 1 !important; aspect-ratio: 4/3 !important; }
+
+  .callout-grid { grid-template-columns: 1fr !important; }
+  .contact-section { padding: 80px 20px 40px !important; }
+  .contact-layout-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .contact-footer-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
+
+  footer { flex-direction: column !important; gap: 8px !important; padding: 28px 20px !important; }
+
+  html, body { cursor: auto !important; }
+}
+
+/* ===== Responsive: Small mobile ===== */
+@media (max-width: 420px) {
+  nav { padding: 12px 16px !important; }
+  section { padding: 56px 16px !important; }
+  .stack-canvas-wrap { height: 300px !important; }
+  .contact-section { padding: 64px 16px 32px !important; }
+  footer { padding: 24px 16px !important; }
+}
