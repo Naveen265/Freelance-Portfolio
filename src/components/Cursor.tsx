@@ -17,18 +17,19 @@ export default function Cursor() {
       dot.style.top  = my + 'px'
     }
 
+    const ringEl = ring
     function animateRing() {
       rx += (mx - rx) * 0.15
       ry += (my - ry) * 0.15
-      ring.style.left = rx + 'px'
-      ring.style.top  = ry + 'px'
+      ringEl.style.left = rx + 'px'
+      ringEl.style.top  = ry + 'px'
       rafId = requestAnimationFrame(animateRing)
     }
     animateRing()
 
     const addToEl = (el: Element) => {
-      el.addEventListener('mouseenter', () => ring.classList.add('cursor-hover'))
-      el.addEventListener('mouseleave', () => ring.classList.remove('cursor-hover'))
+      el.addEventListener('mouseenter', () => ringEl.classList.add('cursor-hover'))
+      el.addEventListener('mouseleave', () => ringEl.classList.remove('cursor-hover'))
     }
 
     // observe DOM for new hover targets
