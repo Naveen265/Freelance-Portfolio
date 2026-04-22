@@ -19,7 +19,7 @@ export default function Cursor() {
     function animateRing() {
       rx += (mx - rx) * 0.15
       ry += (my - ry) * 0.15
-      ring.style.transform = `translate3d(${rx}px,${ry}px,0)`
+      ring!.style.transform = `translate3d(${rx}px,${ry}px,0)`
       rafId = requestAnimationFrame(animateRing)
     }
     animateRing()
