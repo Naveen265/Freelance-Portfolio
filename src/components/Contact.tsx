@@ -18,9 +18,10 @@ export default function Contact() {
   const [status, setStatus]         = useState('')
   const [statusType, setStatusType] = useState<'success' | 'error' | ''>('')
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const data    = new FormData(e.currentTarget)
+    const form    = e.currentTarget
+    const data    = new FormData(form)
     const name    = (data.get('name')    as string || '').trim()
     const email   = (data.get('email')   as string || '').trim()
     const message = (data.get('message') as string || '').trim()
@@ -31,13 +32,38 @@ export default function Contact() {
       return
     }
 
-    const subj = encodeURIComponent(`New project inquiry — ${name}`)
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nCompany: ${data.get('company') || '—'}\nProject type: ${data.get('project_type') || '—'}\nBudget: ${budget || '—'}\n\n${message}`
-    )
-    window.location.href = `mailto:naveenjohnken@gmail.com?subject=${subj}&body=${body}`
-    setStatusType('success')
-    setStatus('Opening your mail client… if nothing happens, email naveenjohnken@gmail.com directly.')
+    setStatus('Sending…')
+    setStatusType('')
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key:   'efbd9bd5-b618-46c9-a54f-bce3e807670e',
+          subject:      `New project inquiry — ${name}`,
+          from_name:    name,
+          name,
+          email,
+          company:      data.get('company') || '—',
+          project_type: data.get('project_type') || '—',
+          budget:       budget || '—',
+          message,
+        }),
+      })
+      const json = await res.json()
+      if (json.success) {
+        setStatusType('success')
+        setStatus("Message sent! I'll be in touch within 24 hours.")
+        form.reset()
+        setBudget('')
+      } else {
+        throw new Error(json.message)
+      }
+    } catch {
+      setStatusType('error')
+      setStatus('Something went wrong. Email naveenjohnken@gmail.com directly.')
+    }
   }
 
   return (
