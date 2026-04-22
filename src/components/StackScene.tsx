@@ -12,8 +12,8 @@ export default function StackScene() {
     const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100)
     camera.position.z = 9   // pulled back so badges stay fully in frame
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    const renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true })
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5))
     container.appendChild(renderer.domElement)
 
     function resize() {
@@ -125,8 +125,11 @@ export default function StackScene() {
     window.addEventListener('pointermove', onMove)
 
     let t = 0, rafId: number
-    function animate() {
-      rafId = requestAnimationFrame(animate)
+    let active = false
+
+    function loop() {
+      if (!active) return
+      rafId = requestAnimationFrame(loop)
       t += 0.01
       if (!isDown) rotY += 0.003
       group.rotation.y = rotY
@@ -137,11 +140,18 @@ export default function StackScene() {
       })
       renderer.render(scene, camera)
     }
-    animate()
+
+    const io = new IntersectionObserver(([entry]) => {
+      active = entry.isIntersecting
+      if (active) loop()
+    }, { threshold: 0 })
+    io.observe(container)
 
     return () => {
+      active = false
       cancelAnimationFrame(rafId)
       ro.disconnect()
+      io.disconnect()
       window.removeEventListener('pointerup', onUp)
       window.removeEventListener('pointermove', onMove)
       container.removeEventListener('pointerdown', onDown)

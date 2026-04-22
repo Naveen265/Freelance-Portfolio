@@ -2,8 +2,8 @@
   --bg: #0a0a0b;
   --bg-2: #111113;
   --fg: #f5f5f0;
-  --fg-dim: #8a8a88;
-  --fg-faint: #3a3a3a;
+  --fg-dim: #b2b2b0;
+  --fg-faint: #6e6e6c;
   --accent: #ff4d2e;
   --accent-2: #7c5cff;
   --line: rgba(255,255,255,0.08);
@@ -14,6 +14,10 @@
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+}
 
 html, body {
   background: var(--bg);
@@ -40,8 +44,8 @@ body::before {
   position: fixed; inset: 0;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.95 0 0 0 0 0.95 0 0 0 0 0.9 0 0 0 0.08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
   pointer-events: none; z-index: 100;
-  opacity: 0.35;
-  mix-blend-mode: overlay;
+  opacity: 0.2;
+  will-change: auto;
 }
 
 @media (hover: none) {

@@ -12,8 +12,8 @@ export default function ProjectsScene() {
     const camera = new THREE.PerspectiveCamera(55, 1, 0.1, 100)
     camera.position.z = 9
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    const renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true })
+    renderer.setPixelRatio(1)
     container.appendChild(renderer.domElement)
 
     function resize() {
@@ -33,13 +33,12 @@ export default function ProjectsScene() {
       new THREE.BoxGeometry(1.4, 1.4, 1.4),
     ]
 
-    const objects = Array.from({ length: 14 }, (_, i) => {
+    const objects = Array.from({ length: 10 }, (_, i) => {
       const size = 0.15 + Math.random() * 0.3
       const geo = geos[i % geos.length].clone()
       geo.scale(size, size, size)
-      const isAccent = i % 3 !== 0
       const mat = new THREE.MeshBasicMaterial({
-        color: isAccent ? 0x7c5cff : 0xff4d2e,
+        color: i % 3 !== 0 ? 0x7c5cff : 0xff4d2e,
         wireframe: true,
         transparent: true,
         opacity: 0.12 + Math.random() * 0.1,
@@ -52,31 +51,37 @@ export default function ProjectsScene() {
       )
       mesh.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, 0)
       scene.add(mesh)
-      return {
-        mesh,
-        rx: (Math.random() - 0.5) * 0.008,
-        ry: (Math.random() - 0.5) * 0.01,
-        phase: Math.random() * Math.PI * 2,
-        baseY: mesh.position.y,
-      }
+      return { mesh, rx: (Math.random() - 0.5) * 0.008, ry: (Math.random() - 0.5) * 0.01, phase: Math.random() * Math.PI * 2, baseY: mesh.position.y }
     })
 
-    let t = 0, rafId: number
-    function animate() {
-      rafId = requestAnimationFrame(animate)
-      t += 0.006
+    let t = 0, rafId: number, active = false, last = 0
+    const STEP = 1000 / 30
+
+    function loop(now: number) {
+      if (!active) return
+      rafId = requestAnimationFrame(loop)
+      if (now - last < STEP) return
+      last = now
+      t += 0.012
       objects.forEach(o => {
-        o.mesh.rotation.x += o.rx
-        o.mesh.rotation.y += o.ry
+        o.mesh.rotation.x += o.rx * 2
+        o.mesh.rotation.y += o.ry * 2
         o.mesh.position.y = o.baseY + Math.sin(t + o.phase) * 0.25
       })
       renderer.render(scene, camera)
     }
-    animate()
+
+    const io = new IntersectionObserver(([entry]) => {
+      active = entry.isIntersecting
+      if (active) loop(performance.now())
+    }, { threshold: 0 })
+    io.observe(container)
 
     return () => {
+      active = false
       cancelAnimationFrame(rafId)
       ro.disconnect()
+      io.disconnect()
       renderer.dispose()
       if (container.contains(renderer.domElement)) container.removeChild(renderer.domElement)
     }
