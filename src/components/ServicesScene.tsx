@@ -13,8 +13,8 @@ export default function ServicesScene() {
     camera.position.set(0, 4, 8)
     camera.lookAt(0, 0, 0)
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    const renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true })
+    renderer.setPixelRatio(1)
     container.appendChild(renderer.domElement)
 
     function resize() {
@@ -27,27 +27,19 @@ export default function ServicesScene() {
     const ro = new ResizeObserver(resize)
     ro.observe(container)
 
-    // perspective grid plane with vertex displacement
-    const gridSize = 20
-    const divisions = 24
-    const geo = new THREE.PlaneGeometry(gridSize, gridSize, divisions, divisions)
+    const geo = new THREE.PlaneGeometry(20, 20, 16, 16)
     geo.rotateX(-Math.PI / 2)
-
     const positions = geo.attributes.position.array as Float32Array
     const origY = new Float32Array(positions.length)
     for (let i = 0; i < positions.length; i++) origY[i] = positions[i]
 
-    const mat = new THREE.MeshBasicMaterial({
-      color: 0x7c5cff,
-      wireframe: true,
-      transparent: true,
-      opacity: 0.08,
-    })
-    const grid = new THREE.Mesh(geo, mat)
+    const grid = new THREE.Mesh(
+      geo,
+      new THREE.MeshBasicMaterial({ color: 0x7c5cff, wireframe: true, transparent: true, opacity: 0.08 })
+    )
     grid.position.y = -2
     scene.add(grid)
 
-    // floating accent spheres above the grid
     const spheres = Array.from({ length: 5 }, (_, i) => {
       const m = new THREE.Mesh(
         new THREE.IcosahedronGeometry(0.18 + i * 0.06, 1),
@@ -58,12 +50,16 @@ export default function ServicesScene() {
       return { m, phase: i * 1.2 }
     })
 
-    let t = 0, rafId: number
-    function animate() {
-      rafId = requestAnimationFrame(animate)
-      t += 0.008
+    let t = 0, rafId: number, active = false, last = 0
+    const STEP = 1000 / 30
 
-      // wave the grid vertices
+    function loop(now: number) {
+      if (!active) return
+      rafId = requestAnimationFrame(loop)
+      if (now - last < STEP) return
+      last = now
+      t += 0.016
+
       const pos = geo.attributes.position.array as Float32Array
       for (let i = 0; i < pos.length; i += 3) {
         const x = origY[i], z = origY[i + 2]
@@ -72,18 +68,25 @@ export default function ServicesScene() {
       geo.attributes.position.needsUpdate = true
 
       spheres.forEach(({ m, phase }) => {
-        m.rotation.x += 0.006
-        m.rotation.y += 0.008
+        m.rotation.x += 0.012
+        m.rotation.y += 0.016
         m.position.y = 0.5 + Math.sin(t + phase) * 0.4
       })
 
       renderer.render(scene, camera)
     }
-    animate()
+
+    const io = new IntersectionObserver(([entry]) => {
+      active = entry.isIntersecting
+      if (active) loop(performance.now())
+    }, { threshold: 0 })
+    io.observe(container)
 
     return () => {
+      active = false
       cancelAnimationFrame(rafId)
       ro.disconnect()
+      io.disconnect()
       renderer.dispose()
       if (container.contains(renderer.domElement)) container.removeChild(renderer.domElement)
     }

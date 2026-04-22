@@ -12,13 +12,12 @@ export default function ExperienceScene() {
     const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 100)
     camera.position.z = 8
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    const renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true })
+    renderer.setPixelRatio(1)
     container.appendChild(renderer.domElement)
 
     function resize() {
-      const w = container!.clientWidth
-      const h = container!.clientHeight
+      const w = container!.clientWidth, h = container!.clientHeight
       renderer.setSize(w, h)
       camera.aspect = w / h
       camera.updateProjectionMatrix()
@@ -27,9 +26,9 @@ export default function ExperienceScene() {
     const ro = new ResizeObserver(resize)
     ro.observe(container)
 
-    const count = 120
+    const count = 80
     const positions = new Float32Array(count * 3)
-    const velocities: { x: number; y: number; z: number }[] = []
+    const velocities: { x: number; y: number }[] = []
 
     for (let i = 0; i < count; i++) {
       positions[i * 3]     = (Math.random() - 0.5) * 20
@@ -38,38 +37,20 @@ export default function ExperienceScene() {
       velocities.push({
         x: (Math.random() - 0.5) * 0.004,
         y: (Math.random() - 0.5) * 0.003,
-        z: 0,
       })
     }
 
     const geo = new THREE.BufferGeometry()
     geo.setAttribute('position', new THREE.BufferAttribute(positions, 3))
+    const mat = new THREE.PointsMaterial({ color: 0xff4d2e, size: 0.05, transparent: true, opacity: 0.35 })
+    scene.add(new THREE.Points(geo, mat))
 
-    const mat = new THREE.PointsMaterial({
-      color: 0xff4d2e,
-      size: 0.04,
-      transparent: true,
-      opacity: 0.35,
-    })
-    const points = new THREE.Points(geo, mat)
-    scene.add(points)
-
-    // subtle connection lines between nearby particles
-    const lineMat = new THREE.LineBasicMaterial({
-      color: 0x7c5cff,
-      transparent: true,
-      opacity: 0.06,
-    })
-
-    const lineGeo = new THREE.BufferGeometry()
     const linePositions: number[] = []
-    const threshold = 4
-
     for (let i = 0; i < count; i++) {
       for (let j = i + 1; j < count; j++) {
         const dx = positions[i * 3]     - positions[j * 3]
         const dy = positions[i * 3 + 1] - positions[j * 3 + 1]
-        if (Math.sqrt(dx * dx + dy * dy) < threshold) {
+        if (Math.sqrt(dx * dx + dy * dy) < 4) {
           linePositions.push(
             positions[i * 3], positions[i * 3 + 1], positions[i * 3 + 2],
             positions[j * 3], positions[j * 3 + 1], positions[j * 3 + 2],
@@ -77,14 +58,19 @@ export default function ExperienceScene() {
         }
       }
     }
-
+    const lineGeo = new THREE.BufferGeometry()
     lineGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(linePositions), 3))
-    const lines = new THREE.LineSegments(lineGeo, lineMat)
-    scene.add(lines)
+    scene.add(new THREE.LineSegments(lineGeo, new THREE.LineBasicMaterial({ color: 0x7c5cff, transparent: true, opacity: 0.06 })))
 
-    let rafId: number
-    function animate() {
-      rafId = requestAnimationFrame(animate)
+    let rafId: number, active = false, last = 0
+    const STEP = 1000 / 30
+
+    function loop(now: number) {
+      if (!active) return
+      rafId = requestAnimationFrame(loop)
+      if (now - last < STEP) return
+      last = now
+
       const pos = geo.attributes.position.array as Float32Array
       for (let i = 0; i < count; i++) {
         pos[i * 3]     += velocities[i].x
@@ -97,20 +83,22 @@ export default function ExperienceScene() {
       geo.attributes.position.needsUpdate = true
       renderer.render(scene, camera)
     }
-    animate()
+
+    const io = new IntersectionObserver(([entry]) => {
+      active = entry.isIntersecting
+      if (active) loop(performance.now())
+    }, { threshold: 0 })
+    io.observe(container)
 
     return () => {
+      active = false
       cancelAnimationFrame(rafId)
       ro.disconnect()
+      io.disconnect()
       renderer.dispose()
       if (container.contains(renderer.domElement)) container.removeChild(renderer.domElement)
     }
   }, [])
 
-  return (
-    <div
-      ref={containerRef}
-      style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none' }}
-    />
-  )
+  return <div ref={containerRef} style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none' }} />
 }

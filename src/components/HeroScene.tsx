@@ -36,10 +36,10 @@ export default function HeroScene() {
     rim2.position.set(4, -2, -3); scene.add(rim2)
 
     const uniforms = {
-      uTime:     { value: 0 },
-      uIntensity:{ value: 0.8 },
-      uAccent:   { value: new THREE.Color(0xff4d2e) },
-      uAccent2:  { value: new THREE.Color(0x7c5cff) },
+      uTime:      { value: 0 },
+      uIntensity: { value: 0.8 },
+      uAccent:    { value: new THREE.Color(0xff4d2e) },
+      uAccent2:   { value: new THREE.Color(0x7c5cff) },
     }
 
     const vertex = /* glsl */`
@@ -121,12 +121,12 @@ export default function HeroScene() {
     window.addEventListener('mousemove', onMouseMove)
 
     let rafId: number
-    function animate() {
-      rafId = requestAnimationFrame(animate)
+    let active = false
+
+    function loop() {
+      if (!active) return
+      rafId = requestAnimationFrame(loop)
       uniforms.uTime.value += 0.01
-      const css = getComputedStyle(document.documentElement)
-      uniforms.uAccent.value.set(css.getPropertyValue('--accent').trim() as unknown as THREE.ColorRepresentation)
-      uniforms.uAccent2.value.set(css.getPropertyValue('--accent-2').trim() as unknown as THREE.ColorRepresentation)
       mesh.rotation.y += 0.003
       mesh.rotation.x += 0.0015
       curRX += (targetRX - curRX) * 0.05
@@ -136,11 +136,18 @@ export default function HeroScene() {
       camera.lookAt(0, 0, 0)
       renderer.render(scene, camera)
     }
-    animate()
+
+    const io = new IntersectionObserver(([entry]) => {
+      active = entry.isIntersecting
+      if (active) loop()
+    }, { threshold: 0 })
+    io.observe(container)
 
     return () => {
+      active = false
       cancelAnimationFrame(rafId)
       ro.disconnect()
+      io.disconnect()
       window.removeEventListener('mousemove', onMouseMove)
       window.removeEventListener('resize', onResize)
       renderer.dispose()

@@ -13,8 +13,8 @@ export default function AboutScene() {
     camera.position.set(0, 2, 7)
     camera.lookAt(0, 0, 0)
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    const renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true })
+    renderer.setPixelRatio(1)
     container.appendChild(renderer.domElement)
 
     function resize() {
@@ -27,11 +27,9 @@ export default function AboutScene() {
     const ro = new ResizeObserver(resize)
     ro.observe(container)
 
-    // primary wave mesh — red
-    const geo1 = new THREE.PlaneGeometry(28, 18, 48, 32)
+    const geo1 = new THREE.PlaneGeometry(28, 18, 32, 20)
     geo1.rotateX(-Math.PI / 2)
     const orig1 = (geo1.attributes.position.array as Float32Array).slice()
-
     const mesh1 = new THREE.Mesh(
       geo1,
       new THREE.MeshBasicMaterial({ color: 0xff4d2e, wireframe: true, transparent: true, opacity: 0.07 })
@@ -39,11 +37,9 @@ export default function AboutScene() {
     mesh1.position.y = -1
     scene.add(mesh1)
 
-    // secondary wave mesh — purple, offset angle
-    const geo2 = new THREE.PlaneGeometry(28, 18, 32, 22)
+    const geo2 = new THREE.PlaneGeometry(28, 18, 20, 14)
     geo2.rotateX(-Math.PI / 2)
     const orig2 = (geo2.attributes.position.array as Float32Array).slice()
-
     const mesh2 = new THREE.Mesh(
       geo2,
       new THREE.MeshBasicMaterial({ color: 0x7c5cff, wireframe: true, transparent: true, opacity: 0.05 })
@@ -52,10 +48,16 @@ export default function AboutScene() {
     mesh2.rotation.y = 0.3
     scene.add(mesh2)
 
-    let t = 0, rafId: number
-    function animate() {
-      rafId = requestAnimationFrame(animate)
-      t += 0.007
+    let t = 0, rafId: number, active = false, last = 0
+    const STEP = 1000 / 30
+
+    function loop(now: number) {
+      if (!active) return
+      rafId = requestAnimationFrame(loop)
+      if (now - last < STEP) return
+      last = now
+
+      t += 0.014
 
       const p1 = geo1.attributes.position.array as Float32Array
       for (let i = 0; i < p1.length; i += 3) {
@@ -76,11 +78,18 @@ export default function AboutScene() {
 
       renderer.render(scene, camera)
     }
-    animate()
+
+    const io = new IntersectionObserver(([entry]) => {
+      active = entry.isIntersecting
+      if (active) loop(performance.now())
+    }, { threshold: 0 })
+    io.observe(container)
 
     return () => {
+      active = false
       cancelAnimationFrame(rafId)
       ro.disconnect()
+      io.disconnect()
       renderer.dispose()
       if (container.contains(renderer.domElement)) container.removeChild(renderer.domElement)
     }

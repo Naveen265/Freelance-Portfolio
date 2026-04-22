@@ -13,44 +13,43 @@ export default function Cursor() {
 
     const onMove = (e: MouseEvent) => {
       mx = e.clientX; my = e.clientY
-      dot.style.left = mx + 'px'
-      dot.style.top  = my + 'px'
+      dot.style.transform = `translate3d(${mx}px,${my}px,0)`
     }
 
-    const ringEl = ring
     function animateRing() {
       rx += (mx - rx) * 0.15
       ry += (my - ry) * 0.15
-      ringEl.style.left = rx + 'px'
-      ringEl.style.top  = ry + 'px'
+      ring.style.transform = `translate3d(${rx}px,${ry}px,0)`
       rafId = requestAnimationFrame(animateRing)
     }
     animateRing()
 
-    const addToEl = (el: Element) => {
-      el.addEventListener('mouseenter', () => ringEl.classList.add('cursor-hover'))
-      el.addEventListener('mouseleave', () => ringEl.classList.remove('cursor-hover'))
+    // event delegation instead of per-element listeners + MutationObserver
+    const onEnter = (e: MouseEvent) => {
+      const t = e.target as Element
+      if (t.closest('[data-cursor="hover"], a, button')) ring.classList.add('cursor-hover')
+    }
+    const onLeave = (e: MouseEvent) => {
+      const t = e.target as Element
+      if (t.closest('[data-cursor="hover"], a, button')) ring.classList.remove('cursor-hover')
     }
 
-    // observe DOM for new hover targets
-    const observer = new MutationObserver(() => {
-      document.querySelectorAll('[data-cursor="hover"], a, button').forEach(addToEl)
-    })
-    observer.observe(document.body, { childList: true, subtree: true })
-    document.querySelectorAll('[data-cursor="hover"], a, button').forEach(addToEl)
-
     window.addEventListener('mousemove', onMove)
+    document.addEventListener('mouseover', onEnter)
+    document.addEventListener('mouseout', onLeave)
+
     return () => {
-      window.removeEventListener('mousemove', onMove)
       cancelAnimationFrame(rafId)
-      observer.disconnect()
+      window.removeEventListener('mousemove', onMove)
+      document.removeEventListener('mouseover', onEnter)
+      document.removeEventListener('mouseout', onLeave)
     }
   }, [])
 
   return (
     <>
-      <div ref={dotRef} className="cursor-dot" />
-      <div ref={ringRef} className="cursor-ring" />
+      <div ref={dotRef}  className="cursor-dot"  style={{ transform: 'translate3d(-100px,-100px,0)' }} />
+      <div ref={ringRef} className="cursor-ring" style={{ transform: 'translate3d(-100px,-100px,0)' }} />
     </>
   )
 }

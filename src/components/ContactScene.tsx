@@ -12,8 +12,8 @@ export default function ContactScene() {
     const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 100)
     camera.position.z = 5
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    const renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true })
+    renderer.setPixelRatio(1)
     container.appendChild(renderer.domElement)
 
     function resize() {
@@ -23,13 +23,14 @@ export default function ContactScene() {
       camera.updateProjectionMatrix()
     }
     resize()
-    window.addEventListener('resize', resize)
+    const ro = new ResizeObserver(resize)
+    ro.observe(container)
 
-    const count = 800
+    const count = 300
     const geo = new THREE.BufferGeometry()
     const pos = new Float32Array(count * 3)
     for (let i = 0; i < count; i++) {
-      pos[i * 3] = (Math.random() - 0.5) * 14
+      pos[i * 3]     = (Math.random() - 0.5) * 14
       pos[i * 3 + 1] = (Math.random() - 0.5) * 8
       pos[i * 3 + 2] = (Math.random() - 0.5) * 10
     }
@@ -45,31 +46,37 @@ export default function ContactScene() {
     }
     window.addEventListener('mousemove', onMouseMove)
 
-    let rafId: number
-    function animate() {
-      rafId = requestAnimationFrame(animate)
-      points.rotation.y += 0.0008
+    let rafId: number, active = false, last = 0
+    const STEP = 1000 / 30
+
+    function loop(now: number) {
+      if (!active) return
+      rafId = requestAnimationFrame(loop)
+      if (now - last < STEP) return
+      last = now
+      points.rotation.y += 0.0016
       points.rotation.x = my * 0.2
       camera.position.x += (mx - camera.position.x) * 0.03
       camera.lookAt(0, 0, 0)
-      const css = getComputedStyle(document.documentElement)
-      mat.color.set(css.getPropertyValue('--accent').trim() as unknown as THREE.ColorRepresentation)
       renderer.render(scene, camera)
     }
-    animate()
+
+    const io = new IntersectionObserver(([entry]) => {
+      active = entry.isIntersecting
+      if (active) loop(performance.now())
+    }, { threshold: 0 })
+    io.observe(container)
 
     return () => {
+      active = false
       cancelAnimationFrame(rafId)
-      window.removeEventListener('resize', resize)
+      ro.disconnect()
+      io.disconnect()
       window.removeEventListener('mousemove', onMouseMove)
       renderer.dispose()
       if (container.contains(renderer.domElement)) container.removeChild(renderer.domElement)
     }
   }, [])
 
-  return (
-    <div ref={containerRef} style={{
-      position: 'absolute', inset: 0, zIndex: 0, opacity: 0.5,
-    }} />
-  )
+  return <div ref={containerRef} style={{ position: 'absolute', inset: 0, zIndex: 0, opacity: 0.5 }} />
 }
