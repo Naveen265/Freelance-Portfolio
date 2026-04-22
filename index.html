@@ -1,24 +1,99 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TJ46DRM8YK"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-TJ46DRM8YK');
-      </script>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Naveen John Kennedy — Full-stack Developer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Geist:wght@300;400;500;600;700&display=swap">
+    <meta name="description" content="Naveen John Kennedy — Chennai-based full-stack developer available for freelance. Fast, modern web apps built end-to-end with React, TypeScript, and Node.js." />
+    <meta name="author" content="Naveen John Kennedy" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#0a0a0b" />
+    <link rel="canonical" href="https://naveenkennedy.dev/" />
+
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://naveenkennedy.dev/" />
+    <meta property="og:site_name" content="Naveen John Kennedy" />
+    <meta property="og:title" content="Naveen John Kennedy — Full-stack Developer" />
+    <meta property="og:description" content="Naveen John Kennedy — Chennai-based full-stack developer available for freelance. Fast, modern web apps built end-to-end with React, TypeScript, and Node.js." />
+    <meta property="og:image" content="https://naveenkennedy.dev/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Naveen John Kennedy — Full-stack Developer" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://naveenkennedy.dev/" />
+    <meta name="twitter:title" content="Naveen John Kennedy — Full-stack Developer" />
+    <meta name="twitter:description" content="Naveen John Kennedy — Chennai-based full-stack developer available for freelance. Fast, modern web apps built end-to-end with React, TypeScript, and Node.js." />
+    <meta name="twitter:image" content="https://naveenkennedy.dev/og-image.png" />
+
+    <!-- JSON-LD Person schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Naveen John Kennedy",
+      "url": "https://naveenkennedy.dev/",
+      "jobTitle": "Full-stack Developer",
+      "image": "https://naveenkennedy.dev/my-pic.png",
+      "email": "naveenjohnken@gmail.com",
+      "sameAs": [
+        "https://github.com/Naveen265"
+      ],
+      "knowsAbout": [
+        "React",
+        "TypeScript",
+        "Node.js",
+        "Express",
+        "PostgreSQL",
+        "MongoDB",
+        "Tailwind CSS",
+        "Three.js",
+        "Full-stack Development",
+        "Web Performance"
+      ]
+    }
+    </script>
+
+    <!-- GA4 Consent Mode v2 — defaults MUST be set before gtag.js loads -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        ad_storage:              'denied',
+        ad_user_data:            'denied',
+        ad_personalization:      'denied',
+        analytics_storage:       'denied',
+        functionality_storage:   'denied',
+        personalization_storage: 'denied',
+        security_storage:        'granted',
+        wait_for_update:         500
+      });
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TJ46DRM8YK"></script>
+    <script>
+      gtag('js', new Date());
+      gtag('config', 'G-TJ46DRM8YK', { anonymize_ip: true });
+    </script>
+
+    <!-- Fonts are self-hosted via @fontsource (see src/index.css) -->
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <p style="font-family:sans-serif;padding:2rem;color:#f5f5f0;background:#0a0a0b;margin:0">
+        This portfolio requires JavaScript to run. You can reach Naveen at
+        <a href="mailto:naveenjohnken@gmail.com" style="color:#ff4d2e">naveenjohnken@gmail.com</a>.
+      </p>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
