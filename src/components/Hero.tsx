@@ -8,6 +8,7 @@ export default function Hero() {
       <div className="hero-text">
         <div className="hero-meta">
           <span><span className="dash">— </span>Full-stack Developer</span>
+          <span><span className="dash">— </span>Founder, Innestolabs</span>
           <span><span className="dash">— </span>Remote · India</span>
           <span><span className="dash">— </span>V1.26 · 001</span>
         </div>
@@ -25,8 +26,8 @@ export default function Hero() {
 
         <div className="hero-bottom">
           <p>
-            Full-stack developer building fast, modern websites for founders.
-            Currently building a construction-estimator platform and open for more work.
+            Full-stack developer and founder of Innestolabs, building fast, modern
+            websites and digital products for founders and growing businesses.
           </p>
           <div>
             <div className="hero-bottom-label">Current Focus</div>

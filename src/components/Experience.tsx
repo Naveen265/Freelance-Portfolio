@@ -1,5 +1,19 @@
 const jobs = [
   {
+    period: 'Mar 2026 —\nPresent',
+    years: '7 mos',
+    role: 'Founder & Full-Stack Developer',
+    company: 'Innestolabs',
+    type: 'MSME-registered studio',
+    location: 'Chennai, India',
+    desc: 'Founded and Udyam-registered Innestolabs, an independent web development studio. I personally own client scoping, technical architecture, implementation, delivery, pricing, and contracts — from lead-generation websites to Site Ledger (siteledger.innestolabs.com), a construction management SaaS covering labour attendance, payroll, site-level inventory, and equipment tracking.',
+    achievements: [
+      'Designed and shipped a production website with an interactive cost estimator for a construction and interiors firm, built to qualify and capture inbound leads.',
+      'Scoping and building a multi-role progressive web app (customer ordering, shop manager, business owner, and delivery rider) for a multi-location retail business.',
+      'Building Site Ledger — labour attendance, payroll, inventory, and equipment tracking for small builders underserved by existing tools.',
+    ],
+  },
+  {
     period: 'Sep 2025 —\nFeb 2026',
     years: '6 mos',
     role: 'Senior Software Engineer',
