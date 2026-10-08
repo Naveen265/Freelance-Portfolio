@@ -707,7 +707,7 @@
   margin-bottom: 8px;
 }
 .exp-achievements li::before {
-  content: '—';
+  content: '•';
   position: absolute;
   left: 0;
   color: var(--accent);

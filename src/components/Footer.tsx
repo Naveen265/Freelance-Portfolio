@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 export default function Footer() {
-  const [time, setTime] = useState('—')
+  const [time, setTime] = useState('--:--')
 
   useEffect(() => {
     function update() {

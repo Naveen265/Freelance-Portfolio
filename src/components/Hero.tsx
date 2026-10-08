@@ -7,10 +7,10 @@ export default function Hero() {
 
       <div className="hero-text">
         <div className="hero-meta">
-          <span><span className="dash">— </span>Full-stack Developer</span>
-          <span><span className="dash">— </span>Founder, Innestolabs</span>
-          <span><span className="dash">— </span>Remote · India</span>
-          <span><span className="dash">— </span>V1.26 · 001</span>
+          <span><span className="dash">· </span>Full-stack Developer</span>
+          <span><span className="dash">· </span>Freelance, innestolabs</span>
+          <span><span className="dash">· </span>Remote · India</span>
+          <span><span className="dash">· </span>V1.26 · 001</span>
         </div>
 
         <h1 className="hero-title">
@@ -26,8 +26,8 @@ export default function Hero() {
 
         <div className="hero-bottom">
           <p>
-            Full-stack developer and founder of Innestolabs, building fast, modern
-            websites and digital products for founders and growing businesses.
+            Full-stack developer freelancing through innestolabs, building fast,
+            modern websites for founders. Open to full-time engineering roles.
           </p>
           <div>
             <div className="hero-bottom-label">Current Focus</div>

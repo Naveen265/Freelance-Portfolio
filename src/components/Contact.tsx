@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import ContactScene from './ContactScene'
 
-const budgets      = ['< $2K', '$2K — $5K', '$5K — $10K', '$10K+', 'Not sure yet']
+const budgets      = ['< $2K', '$2K–$5K', '$5K–$10K', '$10K+', 'Not sure yet']
 const projectTypes = [
   'Marketing site / landing page',
   'Web app / dashboard',
@@ -41,13 +41,13 @@ export default function Contact() {
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
           access_key:   'efbd9bd5-b618-46c9-a54f-bce3e807670e',
-          subject:      `New project inquiry — ${name}`,
+          subject:      `New project inquiry from ${name}`,
           from_name:    name,
           name,
           email,
-          company:      data.get('company') || '—',
-          project_type: data.get('project_type') || '—',
-          budget:       budget || '—',
+          company:      data.get('company') || 'N/A',
+          project_type: data.get('project_type') || 'N/A',
+          budget:       budget || 'N/A',
           message,
         }),
       })
@@ -161,9 +161,9 @@ export default function Contact() {
 
             <div className="contact-next">
               <div className="next-label">What happens next</div>
-              <p>— I reply within 24 hours (weekdays).</p>
-              <p>— We jump on a 20-minute intro call to scope the project.</p>
-              <p>— I send a quote + timeline within 3 business days.</p>
+              <p>1. I reply within 24 hours (weekdays).</p>
+              <p>2. We jump on a 20-minute intro call to scope the project.</p>
+              <p>3. I send a quote + timeline within 3 business days.</p>
             </div>
           </div>
         </div>

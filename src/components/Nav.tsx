@@ -30,7 +30,7 @@ export default function Nav() {
 
       <div className="nav-status">
         <span className="nav-status-dot" />
-        <span>Available — Mon–Fri</span>
+        <span>Available · Mon–Fri</span>
       </div>
     </nav>
   )

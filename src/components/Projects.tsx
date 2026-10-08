@@ -2,38 +2,39 @@ const ownProjects = [
   {
     size: 'feat',
     thumb: 'ledger',
-    metaLeft: '01 · Innestolabs',
-    status: '● Building · 2026',
+    metaLeft: '01 · innestolabs',
+    status: '● Private preview · Nov 2026',
     statusColor: '#ffb800',
     statusBorder: 'rgba(255,184,0,0.4)',
     title: 'Site Ledger',
-    sub: 'Labour attendance, payroll, inventory & equipment SaaS · React · Node · AWS',
+    sub: 'Daily site reports, attendance, materials & spend · React · Node · AWS',
     link: 'https://siteledger.innestolabs.com',
     svg: (
       <svg viewBox="0 0 220 140" fill="none">
         <rect x="10" y="10" width="200" height="120" rx="6" stroke="white" strokeOpacity="0.5" strokeWidth="1"/>
         <rect x="20" y="22" width="90"  height="10" rx="2" fill="white" fillOpacity="0.85"/>
-        <rect x="166" y="20" width="44" height="14" rx="7" fill="#22c98d" fillOpacity="0.18" stroke="#22c98d" strokeWidth="0.8"/>
-        <text x="188" y="30" fill="#22c98d" fontFamily="monospace" fontSize="6.5" textAnchor="middle" fontWeight="700">LIVE SAAS</text>
+        <rect x="160" y="20" width="40" height="14" rx="7" fill="#ffb800" fillOpacity="0.18" stroke="#ffb800" strokeWidth="0.8"/>
+        <text x="180" y="29.5" fill="#ffb800" fontFamily="monospace" fontSize="6" textAnchor="middle" fontWeight="700">PREVIEW</text>
         <rect x="20" y="40" width="190" height="1" fill="white" fillOpacity="0.25"/>
-        <text x="20" y="54" fill="white" fillOpacity="0.5" fontFamily="monospace" fontSize="6.5">MODULE</text>
-        <text x="120" y="54" fill="white" fillOpacity="0.5" fontFamily="monospace" fontSize="6.5">DETAIL</text>
-        <text x="180" y="54" fill="white" fillOpacity="0.5" fontFamily="monospace" fontSize="6.5" textAnchor="end">STATUS</text>
-        <rect x="20" y="60" width="190" height="16" rx="2" fill="white" fillOpacity="0.06"/>
-        <text x="24" y="71" fill="white" fillOpacity="0.85" fontFamily="monospace" fontSize="7">Labour Attendance</text>
-        <text x="120" y="71" fill="white" fillOpacity="0.55" fontFamily="monospace" fontSize="6.5">12 on site</text>
-        <text x="200" y="71" fill="#22c98d" fontFamily="monospace" fontSize="6.5" textAnchor="end" fontWeight="700">CHECKED IN</text>
-        <rect x="20" y="80" width="190" height="16" rx="2" fill="white" fillOpacity="0.03"/>
-        <text x="24" y="91" fill="white" fillOpacity="0.55" fontFamily="monospace" fontSize="7">Cement (OPC)</text>
-        <text x="120" y="91" fill="white" fillOpacity="0.4" fontFamily="monospace" fontSize="6.5">Site B</text>
-        <text x="200" y="91" fill="#ffb800" fontFamily="monospace" fontSize="6.5" textAnchor="end" fontWeight="700">LOW STOCK</text>
-        <rect x="20" y="104" width="190" height="22" rx="3" fill="white" fillOpacity="0.08"/>
-        <text x="28" y="118" fill="white" fontFamily="monospace" fontSize="7" fillOpacity="0.7">PAYROLL · EQUIPMENT · 4 SITES</text>
-        <rect x="150" y="108" width="6" height="14" fill="#22c98d" fillOpacity="0.8"/>
-        <rect x="160" y="112" width="6" height="10" fill="#22c98d" fillOpacity="0.6"/>
-        <rect x="170" y="106" width="6" height="16" fill="#22c98d" fillOpacity="0.8"/>
-        <rect x="180" y="114" width="6" height="8"  fill="#ffb800" fillOpacity="0.8"/>
-        <rect x="190" y="109" width="6" height="13" fill="#22c98d" fillOpacity="0.7"/>
+        <text x="20" y="53" fill="white" fillOpacity="0.9" fontFamily="monospace" fontSize="8" fontWeight="700">LESS PAPERWORK.</text>
+        <text x="20" y="64" fill="#22c98d" fontFamily="monospace" fontSize="8" fontWeight="700">MORE BUILDING.</text>
+        <text x="20" y="77" fill="white" fillOpacity="0.5" fontFamily="monospace" fontSize="6">SITE</text>
+        <text x="80" y="77" fill="white" fillOpacity="0.5" fontFamily="monospace" fontSize="6">UPDATE</text>
+        <text x="200" y="77" fill="white" fillOpacity="0.5" fontFamily="monospace" fontSize="6" textAnchor="end">STATUS</text>
+        <rect x="20" y="82" width="190" height="13" rx="2" fill="white" fillOpacity="0.06"/>
+        <text x="24" y="91" fill="white" fillOpacity="0.85" fontFamily="monospace" fontSize="6.5">Site A</text>
+        <text x="80" y="91" fill="white" fillOpacity="0.55" fontFamily="monospace" fontSize="6.5">Daily report</text>
+        <text x="200" y="91" fill="#22c98d" fontFamily="monospace" fontSize="6" textAnchor="end" fontWeight="700">SUBMITTED</text>
+        <rect x="20" y="97" width="190" height="13" rx="2" fill="white" fillOpacity="0.03"/>
+        <text x="24" y="106" fill="white" fillOpacity="0.55" fontFamily="monospace" fontSize="6.5">Site B</text>
+        <text x="80" y="106" fill="white" fillOpacity="0.4" fontFamily="monospace" fontSize="6.5">Spend request</text>
+        <text x="200" y="106" fill="#ffb800" fontFamily="monospace" fontSize="6" textAnchor="end" fontWeight="700">PENDING</text>
+        <text x="20" y="123" fill="white" fillOpacity="0.5" fontFamily="monospace" fontSize="6.5">EN · TA · HI</text>
+        <rect x="150" y="114" width="6" height="12" fill="#22c98d" fillOpacity="0.8"/>
+        <rect x="160" y="118" width="6" height="8"  fill="#22c98d" fillOpacity="0.6"/>
+        <rect x="170" y="112" width="6" height="14" fill="#22c98d" fillOpacity="0.8"/>
+        <rect x="180" y="120" width="6" height="6"  fill="#ffb800" fillOpacity="0.8"/>
+        <rect x="190" y="115" width="6" height="11" fill="#22c98d" fillOpacity="0.7"/>
       </svg>
     ),
   },
@@ -189,22 +190,22 @@ export default function Projects() {
 
       <div className="projects-head">
         <h2>Things<br />I've <em>shipped.</em></h2>
-        <div className="projects-count">6 projects · 2023 — 2026</div>
+        <div className="projects-count">6 projects · 2023–2026</div>
       </div>
 
       <p style={{ fontFamily: 'var(--mono)', fontSize: 12, color: 'var(--fg-dim)', maxWidth: 640, marginBottom: 48, lineHeight: 1.6 }}>
-        My own ventures and completed freelance work, alongside select projects from my time at Zeb and AVASOFT.
+        Freelance and personal work, alongside select projects from my time at Zeb and AVASOFT.
       </p>
 
       <div className="projects-group" style={{ position: 'relative', zIndex: 1 }}>
-        <div className="projects-group-label">My own work — Innestolabs &amp; freelance</div>
+        <div className="projects-group-label">My own work · innestolabs &amp; freelance</div>
         <div className="projects-grid own">
           {ownProjects.map((p, i) => <ProjectTile key={i} p={p} />)}
         </div>
       </div>
 
       <div className="projects-group" style={{ position: 'relative', zIndex: 1 }}>
-        <div className="projects-group-label">Corporate &amp; client work — Zeb, AVASOFT</div>
+        <div className="projects-group-label">Corporate &amp; client work · Zeb, AVASOFT</div>
         <div className="projects-grid corp">
           {corporateProjects.map((p, i) => <ProjectTile key={i} p={p} />)}
         </div>

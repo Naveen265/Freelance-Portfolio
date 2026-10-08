@@ -12,14 +12,14 @@ export default function WorkingPrinciples() {
         <div>
           <blockquote className="callout-quote">
             <span className="callout-quote-mark">"</span>
-            I build things I'd want to <em>use</em> — fast, clear, and quietly
+            I build things I'd want to <em>use</em>: fast, clear, and quietly
             considered. No bloat, no trend-chasing, no surprises in the codebase.
           </blockquote>
           <div className="callout-attr">
             <div className="callout-avatar" />
             <div>
               <div>Naveen John Kennedy · Full-stack Developer</div>
-              <div style={{ color: 'var(--fg-faint)', marginTop: 2 }}>Freelance, 2026</div>
+              <div style={{ color: 'var(--fg-faint)', marginTop: 2 }}>Freelance, innestolabs · 2026</div>
             </div>
           </div>
         </div>
