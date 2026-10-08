@@ -62,7 +62,7 @@ export default function Contact() {
       }
     } catch {
       setStatusType('error')
-      setStatus('Something went wrong. Email naveenjohnken@gmail.com directly.')
+      setStatus('Something went wrong. Email naveen.john@innestolabs.com directly.')
     }
   }
 
@@ -141,7 +141,7 @@ export default function Contact() {
             <div className="contact-info-grid">
               <div className="contact-info-col">
                 <div className="label">Email</div>
-                <a href="mailto:naveenjohnken@gmail.com" data-cursor="hover">naveenjohnken@gmail.com</a>
+                <a href="mailto:naveen.john@innestolabs.com" data-cursor="hover">naveen.john@innestolabs.com</a>
               </div>
               <div className="contact-info-col">
                 <div className="label">Socials</div>
