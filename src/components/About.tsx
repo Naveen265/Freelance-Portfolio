@@ -1,6 +1,6 @@
 const stats = [
-  { num: '3+', lbl: 'Years building\nweb products' },
-  { num: '5',  lbl: 'Projects shipped\nin production' },
+  { num: '~4', lbl: 'Years building\nweb products' },
+  { num: '6',  lbl: 'Projects shipped\nin production' },
   { num: '∞',  lbl: 'Pixels moved\nby 1px' },
 ]
 
@@ -22,17 +22,31 @@ export default function About() {
           </div>
           <div className="about-body">
             <p>
-              I'm Naveen John Kennedy — a full-stack developer who designs and ships modern web apps
-              end-to-end. From first wireframe to production deploy, I own the stack:
-              interfaces people love to use, APIs that stay out of the way, and codebases
-              your next hire will thank you for.
+              I'm Naveen John Kennedy, a full-stack developer with almost 4 years of
+              experience. I design and build responsive, modern websites and practical
+              digital solutions that help businesses present themselves professionally
+              and generate enquiries.
             </p>
             <p>
-              I deliver marketing sites, dashboards, internal tools, and MVPs — with clean
-              architecture, accessible interactions, and the kind of attention to detail that
-              makes a product feel considered. If you want something that looks and performs
-              a cut above — let's talk.
+              I deliver marketing sites, landing pages, redesigns, and lead-generation
+              websites, with clean architecture, accessible interactions, and the kind of
+              attention to detail that makes a site feel considered. If you want something
+              that looks and performs a cut above, let's talk.
             </p>
+            <p>
+              Since March 2026, I've been freelancing through innestolabs, delivering
+              client projects end to end as the sole engineer on every build. I'm also
+              open to full-time engineering roles where I can commit fully to one product
+              team.
+            </p>
+            <a
+              className="about-link"
+              href="https://innestolabs.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Explore innestolabs<span className="project-link-arrow">↗</span>
+            </a>
           </div>
         </div>
 

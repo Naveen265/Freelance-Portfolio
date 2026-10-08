@@ -1,37 +1,62 @@
-const projects = [
+const ownProjects = [
   {
     size: 'feat',
-    thumb: 'aurora',
-    metaLeft: '01 · Current client',
-    status: '● In Progress · 2026',
+    thumb: 'ledger',
+    metaLeft: '01 · innestolabs',
+    status: '● Private preview · Nov 2026',
     statusColor: '#ffb800',
     statusBorder: 'rgba(255,184,0,0.4)',
-    title: 'EmpireConstruction',
-    sub: 'Website + construction estimator tool · React · Node · Postgres',
+    title: 'Site Ledger',
+    sub: 'Daily site reports, attendance, materials & spend · React · Node · AWS',
+    link: 'https://siteledger.innestolabs.com',
     svg: (
       <svg viewBox="0 0 220 140" fill="none">
         <rect x="10" y="10" width="200" height="120" rx="6" stroke="white" strokeOpacity="0.5" strokeWidth="1"/>
-        <rect x="20" y="22" width="70"  height="10" rx="2" fill="white" fillOpacity="0.85"/>
-        <rect x="20" y="38" width="110" height="4"  rx="2" fill="white" fillOpacity="0.35"/>
-        <rect x="20" y="48" width="80"  height="4"  rx="2" fill="white" fillOpacity="0.35"/>
-        <rect x="20" y="68" width="180" height="1"       fill="white" fillOpacity="0.3"/>
-        <rect x="20" y="78" width="44"  height="14" rx="2" fill="white" fillOpacity="0.15"/>
-        <rect x="66" y="78" width="44"  height="14" rx="2" fill="white" fillOpacity="0.15"/>
-        <rect x="112" y="78" width="44" height="14" rx="2" fill="#ff4d2e"/>
-        <text x="134" y="89" fill="white" fontFamily="monospace" fontSize="7" textAnchor="middle" fontWeight="600">ESTIMATE</text>
-        <rect x="20" y="100" width="180" height="22" rx="3" fill="white" fillOpacity="0.08"/>
-        <text x="28"  y="114" fill="white" fontFamily="monospace" fontSize="7" fillOpacity="0.7">PROJECT TOTAL</text>
-        <text x="192" y="114" fill="white" fontFamily="monospace" fontSize="9" textAnchor="end" fontWeight="700">$248,500</text>
+        <rect x="20" y="22" width="90"  height="10" rx="2" fill="white" fillOpacity="0.85"/>
+        <rect x="160" y="20" width="40" height="14" rx="7" fill="#ffb800" fillOpacity="0.18" stroke="#ffb800" strokeWidth="0.8"/>
+        <text x="180" y="29.5" fill="#ffb800" fontFamily="monospace" fontSize="6" textAnchor="middle" fontWeight="700">PREVIEW</text>
+        <rect x="20" y="40" width="190" height="1" fill="white" fillOpacity="0.25"/>
+        <text x="20" y="53" fill="white" fillOpacity="0.9" fontFamily="monospace" fontSize="8" fontWeight="700">LESS PAPERWORK.</text>
+        <text x="20" y="64" fill="#22c98d" fontFamily="monospace" fontSize="8" fontWeight="700">MORE BUILDING.</text>
+        <text x="20" y="77" fill="white" fillOpacity="0.5" fontFamily="monospace" fontSize="6">SITE</text>
+        <text x="80" y="77" fill="white" fillOpacity="0.5" fontFamily="monospace" fontSize="6">UPDATE</text>
+        <text x="200" y="77" fill="white" fillOpacity="0.5" fontFamily="monospace" fontSize="6" textAnchor="end">STATUS</text>
+        <rect x="20" y="82" width="190" height="13" rx="2" fill="white" fillOpacity="0.06"/>
+        <text x="24" y="91" fill="white" fillOpacity="0.85" fontFamily="monospace" fontSize="6.5">Site A</text>
+        <text x="80" y="91" fill="white" fillOpacity="0.55" fontFamily="monospace" fontSize="6.5">Daily report</text>
+        <text x="200" y="91" fill="#22c98d" fontFamily="monospace" fontSize="6" textAnchor="end" fontWeight="700">SUBMITTED</text>
+        <rect x="20" y="97" width="190" height="13" rx="2" fill="white" fillOpacity="0.03"/>
+        <text x="24" y="106" fill="white" fillOpacity="0.55" fontFamily="monospace" fontSize="6.5">Site B</text>
+        <text x="80" y="106" fill="white" fillOpacity="0.4" fontFamily="monospace" fontSize="6.5">Spend request</text>
+        <text x="200" y="106" fill="#ffb800" fontFamily="monospace" fontSize="6" textAnchor="end" fontWeight="700">PENDING</text>
+        <text x="20" y="123" fill="white" fillOpacity="0.5" fontFamily="monospace" fontSize="6.5">EN · TA · HI</text>
+        <rect x="150" y="114" width="6" height="12" fill="#22c98d" fillOpacity="0.8"/>
+        <rect x="160" y="118" width="6" height="8"  fill="#22c98d" fillOpacity="0.6"/>
+        <rect x="170" y="112" width="6" height="14" fill="#22c98d" fillOpacity="0.8"/>
+        <rect x="180" y="120" width="6" height="6"  fill="#ffb800" fillOpacity="0.8"/>
+        <rect x="190" y="115" width="6" height="11" fill="#22c98d" fillOpacity="0.7"/>
       </svg>
     ),
   },
   {
     size: 'small',
+    image: '/projects/empire-construction.png',
+    thumb: 'aurora',
+    metaLeft: '02 · Freelance',
+    status: '✓ Completed · 2026',
+    title: 'Empire Constructions',
+    sub: 'Lead-gen site + multi-step cost estimator · React · Node · TypeScript',
+  },
+]
+
+const corporateProjects = [
+  {
+    size: 'small',
     thumb: 'warm',
-    metaLeft: '02 · Zeb',
+    metaLeft: '03 · Zeb',
     status: '2025–26',
     title: 'Lynxis',
-    sub: 'Shipping & Rail Terminal · 10K users',
+    sub: 'Logistics platform · 100K–200K users · WebSockets & live dashboards',
     svg: (
       <svg viewBox="0 0 100 100" fill="none">
         <rect x="18" y="24" width="64" height="52" rx="3" stroke="white" strokeOpacity="0.7" strokeWidth="1"/>
@@ -44,12 +69,12 @@ const projects = [
     ),
   },
   {
-    size: 'wide',
+    size: 'small',
     thumb: 'cool',
-    metaLeft: '03 · AVASOFT',
+    metaLeft: '04 · AVASOFT',
     status: '2024',
     title: 'Pulse',
-    sub: 'Application assessment tool · React · PDF export',
+    sub: 'Code quality & pipeline assessment tool · PDF export · –40% export errors',
     svg: (
       <svg viewBox="0 0 100 100" fill="none">
         <rect x="20" y="20" width="60" height="60" rx="4" stroke="white" strokeOpacity="0.6" strokeWidth="1"/>
@@ -63,9 +88,9 @@ const projects = [
     ),
   },
   {
-    size: 'wide',
+    size: 'small',
     thumb: 'iso',
-    metaLeft: '04 · AVASOFT',
+    metaLeft: '05 · AVASOFT',
     status: '2024',
     title: 'RACPAD',
     sub: 'Rent-A-Center · React refactor · 200K→50K LOC',
@@ -82,7 +107,7 @@ const projects = [
   {
     size: 'small',
     thumb: 'mono',
-    metaLeft: '05 · AVASOFT',
+    metaLeft: '06 · AVASOFT',
     status: '2023',
     title: 'Hive',
     sub: 'Employee assessment · React + Node + Lambda',
@@ -100,6 +125,60 @@ const projects = [
 
 import ProjectsScene from './ProjectsScene'
 
+type Project = {
+  size: string
+  thumb: string
+  metaLeft: string
+  status: string
+  statusColor?: string
+  statusBorder?: string
+  title: string
+  sub: string
+  link?: string
+  image?: string
+  svg?: React.ReactNode
+}
+
+function ProjectTile({ p }: { p: Project }) {
+  const Tag = p.link ? 'a' : 'div'
+  const linkProps = p.link ? { href: p.link, target: '_blank', rel: 'noopener noreferrer' } : {}
+  return (
+    <Tag className={`project ${p.size}`} data-cursor="hover" {...linkProps}>
+      <div
+        className={`project-thumb thumb-${p.thumb}`}
+        onMouseLeave={(e: any) => { e.currentTarget.style.transform = '' }}
+        onMouseMove={(e: any) => {
+          const el = e.currentTarget
+          const r = el.getBoundingClientRect()
+          const x = (e.clientX - r.left) / r.width  - 0.5
+          const y = (e.clientY - r.top)  / r.height - 0.5
+          el.style.transform = `perspective(800px) rotateX(${-y * 4}deg) rotateY(${x * 4}deg)`
+        }}
+      >
+        {p.image
+          ? <img className="project-thumb-img" src={p.image} alt={p.title} />
+          : <div className="project-thumb-icon">{p.svg}</div>}
+      </div>
+
+      <div className="project-caption">
+        <div className="project-meta-top">
+          <span>{p.metaLeft}</span>
+          <span
+            className="status-pill"
+            style={p.statusColor ? { color: p.statusColor, borderColor: p.statusBorder } : undefined}
+          >
+            {p.status}
+          </span>
+        </div>
+        <div className="project-title-block">
+          <h3>{p.title}{p.link && <span className="project-link-arrow">↗</span>}</h3>
+          <div className="project-sub">{p.sub}</div>
+        </div>
+      </div>
+    </Tag>
+  )
+}
+
 export default function Projects() {
   return (
     <section id="work" className="section" style={{ overflow: 'hidden' }}>
@@ -111,49 +190,25 @@ export default function Projects() {
 
       <div className="projects-head">
         <h2>Things<br />I've <em>shipped.</em></h2>
-        <div className="projects-count">5 projects · 2023 — 2026</div>
+        <div className="projects-count">6 projects · 2023–2026</div>
       </div>
 
       <p style={{ fontFamily: 'var(--mono)', fontSize: 12, color: 'var(--fg-dim)', maxWidth: 640, marginBottom: 48, lineHeight: 1.6 }}>
-        A mix of current freelance work and select projects from my time at Zeb and AVASOFT.
+        Freelance and personal work, alongside select projects from my time at Zeb and AVASOFT.
       </p>
 
-      <div className="projects-grid" style={{ position: 'relative', zIndex: 1 }}>
-        {projects.map((p, i) => (
-          <div
-            key={i}
-            className={`project ${p.size}`}
-            data-cursor="hover"
-            onMouseLeave={e => { e.currentTarget.style.transform = '' }}
-            onMouseMove={e => {
-              const el = e.currentTarget
-              const r = el.getBoundingClientRect()
-              const x = (e.clientX - r.left) / r.width  - 0.5
-              const y = (e.clientY - r.top)  / r.height - 0.5
-              el.style.transform = `perspective(800px) rotateX(${-y * 4}deg) rotateY(${x * 4}deg)`
-            }}
-          >
-            <div className={`project-thumb thumb-${p.thumb}`}>
-              <div className="project-thumb-icon">{p.svg}</div>
-            </div>
+      <div className="projects-group" style={{ position: 'relative', zIndex: 1 }}>
+        <div className="projects-group-label">My own work · innestolabs &amp; freelance</div>
+        <div className="projects-grid own">
+          {ownProjects.map((p, i) => <ProjectTile key={i} p={p} />)}
+        </div>
+      </div>
 
-            <div className="project-overlay">
-              <div className="project-meta-top">
-                <span>{p.metaLeft}</span>
-                <span
-                  className="status-pill"
-                  style={p.statusColor ? { color: p.statusColor, borderColor: p.statusBorder } : undefined}
-                >
-                  {p.status}
-                </span>
-              </div>
-              <div className="project-title-block">
-                <h3>{p.title}</h3>
-                <div className="project-sub">{p.sub}</div>
-              </div>
-            </div>
-          </div>
-        ))}
+      <div className="projects-group" style={{ position: 'relative', zIndex: 1 }}>
+        <div className="projects-group-label">Corporate &amp; client work · Zeb, AVASOFT</div>
+        <div className="projects-grid corp">
+          {corporateProjects.map((p, i) => <ProjectTile key={i} p={p} />)}
+        </div>
       </div>
     </section>
   )

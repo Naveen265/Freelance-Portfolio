@@ -1,12 +1,26 @@
 const jobs = [
   {
-    period: 'Sep 2025 —\nFeb 2026',
+    period: 'Mar 2026 –\nPresent',
+    years: '7 mos',
+    role: 'Freelance Full Stack Developer',
+    company: 'innestolabs',
+    type: 'Freelance',
+    location: 'Chennai, India',
+    desc: 'Freelancing through innestolabs since March 2026 as sole engineer on client engagements. I own requirements, technical architecture, implementation, and deployment end to end, working directly with business stakeholders.',
+    achievements: [
+      'Designed and shipped a production website with an interactive multi-step cost estimator for a construction and interiors firm, generating instant quotes and capturing qualified leads.',
+      'Scoping and architecting a progressive web app with four role-based interfaces: customer ordering, shop manager, business owner, and delivery rider, for a multi-location retail business.',
+      'Building Site Ledger, a construction management web app with modules for labour attendance, payroll, site-level inventory, and equipment tracking.',
+    ],
+  },
+  {
+    period: 'Sep 2025 –\nFeb 2026',
     years: '6 mos',
     role: 'Senior Software Engineer',
     company: 'Zeb',
     type: 'Full-time',
     location: 'Chennai, India · On-site',
-    desc: 'Led a frontend team of 5, focused on a client-facing logistics platform. Owned the frontend architecture and coding standards across React, JavaScript, and TypeScript applications — significantly improving maintainability and scalability.',
+    desc: 'Led a frontend team of 5 on a real-time logistics platform serving 100,000+ users. Owned the frontend architecture and coding standards across React, JavaScript, and TypeScript applications, significantly improving maintainability and scalability.',
     achievements: [
       'Ran regular code reviews and mentored developers on best practices, lifting overall engineering standards.',
       'Led advanced UI features including dashboards and live-update modules, improving UX and operational efficiency.',
@@ -14,7 +28,7 @@ const jobs = [
     ],
   },
   {
-    period: 'Feb 2023 —\nAug 2025',
+    period: 'Feb 2023 –\nAug 2025',
     years: '2 yrs 7 mos',
     role: 'Software Engineer',
     company: 'AVASOFT',
@@ -23,7 +37,7 @@ const jobs = [
     desc: 'Built and maintained complex web applications with React, TypeScript, HTML, and CSS. Developed REST APIs using Node.js and Express.js for business workflows and reporting, wrote Jest unit tests for reliability, and drove Agile/Scrum delivery with CI/CD.',
     achievements: [
       'Shipped multiple enterprise applications, improving functionality and user experience across product lines.',
-      'Drove performance work via code refactoring and lazy loading — measurably faster, more maintainable apps.',
+      'Drove performance work via code refactoring and lazy loading, resulting in measurably faster, more maintainable apps.',
       'Resolved stubborn UI/API issues, collaborating with DevOps for smooth production releases.',
     ],
   },

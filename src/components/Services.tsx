@@ -8,13 +8,13 @@ const services = [
   {
     idx: '(s-02)',
     title: 'Web apps\n& dashboards.',
-    desc: 'Full-stack SaaS products, admin panels, internal tools. Auth, roles, realtime — the whole thing. From design to a shipped product on your domain.',
+    desc: 'Full-stack SaaS products, admin panels, internal tools. Auth, roles, realtime, the whole thing. From design to a shipped product on your domain.',
     tags: ['React', 'Node', 'Postgres', 'MongoDB'],
   },
   {
     idx: '(s-03)',
     title: 'Interactive\nexperiences.',
-    desc: 'Where most devs stop, I start. 3D elements, scroll-driven stories, custom cursors, micro-interactions — the details that make your site feel alive.',
+    desc: 'Where most devs stop, I start. 3D elements, scroll-driven stories, custom cursors, micro-interactions: the details that make your site feel alive.',
     tags: ['React', 'WebGL', 'Motion', 'Shaders'],
   },
   {

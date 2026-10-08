@@ -9,6 +9,7 @@ const stackList = [
   { name: 'PostgreSQL',   cat: 'database' },
   { name: 'MongoDB',      cat: 'database' },
   { name: 'REST APIs',    cat: 'integration' },
+  { name: 'AWS',          cat: 'cloud' },
   { name: 'Claude',       cat: 'AI pair' },
   { name: 'Claude Design',cat: 'AI design' },
   { name: 'Git',          cat: 'version' },
